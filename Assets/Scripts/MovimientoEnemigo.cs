@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovimientoEnemigo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject jugador;
+
+    public float velocidad = 3f;
+
+    void Awake()
     {
-        
+        //jugador = GameObject.Find("Jugador");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.right = jugador.transform.position - transform.position;
+
+        GetComponent<Rigidbody2D>().velocity = transform.right * velocidad;
+
+        transform.Rotate(new Vector3(0, 0, -90));
     }
 }
