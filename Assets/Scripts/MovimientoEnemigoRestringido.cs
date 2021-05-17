@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class MovimientoEnemigoRestringido : MonoBehaviour
 {
-    GameObject jugador;
     GameObject centroEspacio;
-
     GameObject objetoASeguir = null;
 
     float velocidad = 5f;
@@ -15,7 +13,6 @@ public class MovimientoEnemigoRestringido : MonoBehaviour
 
     void Awake()
     {
-        jugador = GameObject.Find("Jugador");
         centroEspacio = GameObject.Find("CentroEspacio");
     }
 
