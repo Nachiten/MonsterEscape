@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7134996466681542698}
   - component: {fileID: 7134996466681542697}
-  - component: {fileID: 7134996466681542696}
   - component: {fileID: 7134996466681542703}
-  - component: {fileID: 7134996466681542702}
+  - component: {fileID: 659397870418674285}
   m_Layer: 0
   m_Name: Enemigo
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7134996466681542701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.16, y: -3.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,32 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7134996466681542696
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7134996466681542701}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.00890547}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.6233853}
-  m_EdgeRadius: 0
 --- !u!50 &7134996466681542703
 Rigidbody2D:
   serializedVersion: 4
@@ -132,15 +105,54 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7134996466681542702
-MonoBehaviour:
+--- !u!60 &659397870418674285
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134996466681542701}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca47925371e59eb4db9d6ce74eae3ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.47698724, y: -0.017832965}
+      - {x: 0.39150986, y: 0.12741801}
+      - {x: 0.043263912, y: 0.73012257}
+      - {x: 0.010331539, y: 0.7873818}
+      - {x: 0.0017089844, y: 0.79986286}
+      - {x: -0.006525673, y: 0.7884043}
+      - {x: -0.016352654, y: 0.7690978}
+      - {x: -0.39684725, y: 0.1181798}
+      - {x: -0.44903457, y: 0.024114966}
+      - {x: -0.46549296, y: -0.0025548525}
+      - {x: -0.47642136, y: -0.026840687}
+      - {x: -0.4845028, y: -0.041791916}
+      - {x: -0.49035072, y: -0.052055836}
+      - {x: -0.49988937, y: -0.06415939}
+      - {x: -0.50300956, y: -0.06811794}
+      - {x: -0.47331977, y: -0.06665026}
+      - {x: -0.3981352, y: -0.06839609}
+      - {x: -0.32404804, y: -0.072460175}
+      - {x: -0.28001118, y: -0.07115421}
+      - {x: -0.23332691, y: -0.072020054}
+      - {x: -0.25, y: -0.82}
+      - {x: -0.22, y: -0.84999996}
+      - {x: 0.22, y: -0.84999996}
+      - {x: 0.25, y: -0.82}
+      - {x: 0.23211235, y: -0.08210843}
+      - {x: 0.5199964, y: -0.08332738}

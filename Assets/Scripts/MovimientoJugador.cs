@@ -2,11 +2,36 @@ using UnityEngine;
 
 public class MovimientoJugador : MonoBehaviour
 {
-    public float velocidad = 7f;
+    float velocidad = 7f;
 
     float rotacion = 0;
 
+    bool perdio = false;
+
     void Update()
+    {
+        if (perdio)
+            return;
+
+        ejecutarMovimientoJugador();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemigo"))
+        {
+            perderJuego();   
+        }
+    }
+
+    void perderJuego() 
+    {
+        perdio = true;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GameObject.Find("GameManager").GetComponent<GameManager>().perdioJuego();
+    }
+
+    void ejecutarMovimientoJugador() 
     {
         float movimientoX = 0;
         float movimientoY = 0;
@@ -35,16 +60,11 @@ public class MovimientoJugador : MonoBehaviour
         {
             movimientoX += velocidad;
             if (apreteArriba)
-            {
                 rotacion = -45;
-            }
             else if (apreteAbajo)
-            {
                 rotacion = 225;
-            }
-            else {
+            else
                 rotacion = -90;
-            }
         }
 
         // Izquierda - -X
@@ -52,25 +72,14 @@ public class MovimientoJugador : MonoBehaviour
         {
             movimientoX += -velocidad;
             if (apreteArriba)
-            {
                 rotacion = 45;
-            }
             else if (apreteAbajo)
-            {
                 rotacion = 135;
-            }
             else
-            {
                 rotacion = 90;
-            }
         }
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(movimientoX, movimientoY);
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotacion));
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("[MovimientoJugador] OnTriggerEnter2D");
     }
 }
