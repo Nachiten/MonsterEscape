@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class MovimientoJugador : MonoBehaviour
+public class MovimientoJugador : MonoBehaviour, IPersonajeMapa
 {
-    float velocidad = 7f;
+    float rotacion = 0, velocidad = 7f;
 
-    float rotacion = 0;
+    bool perdio = false, pausa = false;
 
-    bool perdio = false;
+    Rigidbody2D rigidBodyObjetoActual;
+
+    private void Awake()
+    {
+        rigidBodyObjetoActual = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        if (perdio)
+        if (perdio || pausa)
             return;
 
         ejecutarMovimientoJugador();
@@ -20,15 +25,15 @@ public class MovimientoJugador : MonoBehaviour
     {
         if (collision.CompareTag("Enemigo"))
         {
-            perderJuego();   
+            perderJuegoLocal();   
         }
     }
 
-    void perderJuego() 
+    void perderJuegoLocal() 
     {
         perdio = true;
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GameObject.Find("GameManager").GetComponent<GameManager>().perdioJuego();
+        rigidBodyObjetoActual.velocity = Vector2.zero;
+        GameObject.Find("GameManager").GetComponent<GameManager>().perderJuego();
     }
 
     void ejecutarMovimientoJugador() 
@@ -79,7 +84,17 @@ public class MovimientoJugador : MonoBehaviour
                 rotacion = 90;
         }
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(movimientoX, movimientoY);
+        rigidBodyObjetoActual.velocity = new Vector2(movimientoX, movimientoY);
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotacion));
+    }
+
+    public void perderJuego() { }
+
+    public void manejarPausa() 
+    { 
+        pausa = !pausa; 
+
+        if (pausa)
+            rigidBodyObjetoActual.velocity = Vector2.zero;
     }
 }
