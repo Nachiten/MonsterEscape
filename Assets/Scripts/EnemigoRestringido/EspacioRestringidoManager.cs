@@ -28,7 +28,6 @@ public class EspacioRestringidoManager : MonoBehaviour
     {
         if (collision.CompareTag("Jugador")) 
         {
-            Debug.Log("Jugador entro a espacio enemigo");
             spriteRestringidoManager.seguirA(jugador);
         }
     }

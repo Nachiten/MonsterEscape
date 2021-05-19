@@ -8,7 +8,7 @@ public class SpriteRotatorioManager : MonoBehaviour, IPersonajeMapa
     bool perdio = false, estoyEnAnimacion = false, pausa = false;
 
     float timePassed = 0;
-    float intervaloAparicion = 4f;
+    float intervaloAparicion = 2.5f;
 
     void Awake()
     {
@@ -17,7 +17,7 @@ public class SpriteRotatorioManager : MonoBehaviour, IPersonajeMapa
         // Busco al proyectil dentro de los hijos de mi padre
         foreach (Transform hijoDeMiPadre in transform.parent.transform)
         {
-            if (hijoDeMiPadre.gameObject.name == "Proyectil")
+            if (hijoDeMiPadre.gameObject.name.Equals("Proyectil"))
             {
                 proyectil = hijoDeMiPadre.gameObject;
                 break;

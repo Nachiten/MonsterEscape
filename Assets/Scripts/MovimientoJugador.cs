@@ -23,7 +23,7 @@ public class MovimientoJugador : MonoBehaviour, IPersonajeMapa
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemigo"))
+        if (collision.CompareTag("Enemigo") || collision.CompareTag("ParedMapa"))
         {
             perderJuegoLocal();   
         }

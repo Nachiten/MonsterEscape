@@ -9,7 +9,7 @@ public class ProyectilRotatorioManager : MonoBehaviour, IPersonajeMapa
 
     float velocidad = 8f;
 
-    bool perdio = false, pausa = false;
+    bool pausa = false;
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class ProyectilRotatorioManager : MonoBehaviour, IPersonajeMapa
 
         foreach (Transform hijoDeMiPadre in transform.parent.transform)
         {
-            if (hijoDeMiPadre.gameObject.name == "Sprite") 
+            if (hijoDeMiPadre.gameObject.name.Equals("Sprite")) 
             {
                 sprite = hijoDeMiPadre.gameObject;
                 break;
@@ -35,26 +35,19 @@ public class ProyectilRotatorioManager : MonoBehaviour, IPersonajeMapa
     void OnEnable()
     {
         transform.position = sprite.transform.position;
+
         transform.right = jugador.transform.position - transform.position;
+
         rigidBodyObjetoActual.velocity = transform.right * velocidad;
     }
 
-    void Update()
+    void OnBecameInvisible()
     {
-        if (perdio || pausa)
-            return;
-
-        float distancia = Vector3.Distance(transform.position, Vector3.zero);
-
-        if (distancia > 10f) 
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 
     public void perderJuego()
     {
-        perdio = true;
         rigidBodyObjetoActual.velocity = Vector2.zero;
     }
 
@@ -73,5 +66,11 @@ public class ProyectilRotatorioManager : MonoBehaviour, IPersonajeMapa
         {
             rigidBodyObjetoActual.velocity = ultimaVelocidad;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ParedMapa"))
+            gameObject.SetActive(false);
     }
 }

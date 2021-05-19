@@ -8,6 +8,7 @@ TagManager:
   - Jugador
   - EspacioEnemigo
   - Enemigo
+  - ParedMapa
   layers:
   - Default
   - TransparentFX
