@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemigoMovilCuadradoManager : MonoBehaviour, IPersonajeMapa
 {
-    float tiempoMover = 1f, ladoCuadrado = 3f;
+    float tiempoMover = 1f, ladoCuadrado = 4f;
 
     void Start()
     {
